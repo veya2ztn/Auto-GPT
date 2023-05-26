@@ -84,6 +84,12 @@ class Logger(metaclass=Singleton):
         self.speak_mode = False
         self.chat_plugins = []
 
+    def Intergate_to_workflow(self, workflow_type, workflow_content):
+        '''
+            Count plus 1 after one action, thus the action is the minmum node.
+            Notice, the actions has Hierarchical relationship, how to reveal it ? 
+        '''
+        pass 
     def typewriter_log(
         self, title="", title_color="", content="", speak_text=False, level=logging.INFO
     ):
@@ -102,7 +108,7 @@ class Logger(metaclass=Singleton):
         self.typing_logger.log(
             level, content, extra={"title": title, "color": title_color}
         )
-
+        
     def debug(
         self,
         message,
@@ -270,7 +276,7 @@ def print_assistant_thoughts(
         assistant_thoughts_speak = assistant_thoughts.get("speak")
     logger.typewriter_log(
         f"{ai_name.upper()} THOUGHTS:", Fore.YELLOW, f"{assistant_thoughts_text}"
-    )
+    ) 
     logger.typewriter_log("REASONING:", Fore.YELLOW, f"{assistant_thoughts_reasoning}")
     if assistant_thoughts_plan:
         logger.typewriter_log("PLAN:", Fore.YELLOW, "")
